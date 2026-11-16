@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bridging Scarcity and Surplus | Uptown Charlotte Culinary Food-Recovery Network</title>
+  <style>
+    /* =========================================================
+       BRIGHT PALETTE: LUMINOUS PALE BLUE & WHITE WITH BLACK ACCENTS
+       FONT: TIMES NEW ROMAN
+       ========================================================= */
+    :root {
+      --pale-blue: #E3F0FC;
+      --pale-blue-light: #F4F9FE;
+      --pale-blue-mid: #C4DFF8;
+      --white: #FFFFFF;
+      --black: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.68;
+      font-size: 18px;
+    }
+
+    /* Sticky Header & Tab Navigation */
+    header {
+      background-color: var(--pale-blue);
+      color: var(--black);
+      border-bottom: 2px solid var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .site-brand {
+      font-size: 1.35rem;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      color: var(--black);
+      background: none;
+      border: none;
+      font-family: "Times New Roman", Times, serif;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tab-btn {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 8px 14px;
+      background-color: var(--white);
+      color: var(--black);
+      border: 1.5px solid var(--black);
+      cursor: pointer;
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    /* Main Container & Tab Panels */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 26px 20px 64px;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* Bright Hero Banner with Uptown Charlotte Skyline Silhouette */
+    .hero-banner {
+      position: relative;
+      background-color: var(--pale-blue-light);
+      color: var(--black);
+      border: 2px solid var(--black);
+      padding: 56px 32px 66px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .skyline-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 185px;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      background-color: var(--black);
+      color: var(--white);
+      font-weight: bold;
+      font-size: 0.92rem;
+      padding: 4px 14px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-banner h1 {
+      font-size: 2.85rem;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+
+    .hero-banner p {
+      font-size: 1.15rem;
+      color: var(--black);
+      margin-bottom: 26px;
+    }
+
+    /* Working Navigation Buttons & Calls to Action */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .btn-primary,
+    .btn-dark {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.02rem;
+      font-weight: bold;
+      padding: 11px 22px;
+      background-color: var(--black);
+      color: var(--white);
+      border: 2px solid var(--black);
+      cursor: pointer;
+    }
+
+    .btn-primary:hover,
+    .btn-dark:hover {
+      background-color: var(--white);
+      color: var(--black);
+    }
+
+    .btn-secondary {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 1.02rem;
+      font-weight: bold;
+      padding: 11px 22px;
+      background-color: var(--white);
+      color: var(--black);
+      border: 2px solid var(--black);
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--pale-blue);
+      color: var(--black);
+    }
+
+    /* Typography & Structural Cards */
+    h2 {
+      font-size: 1.9rem;
+      border-bottom: 2px solid var(--black);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      margin-top: 8px;
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 16px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 24px 0;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 24px 0;
+    }
+
+    .card {
+      background-color: var(--pale-blue-light);
+      border: 1.5px solid var(--black);
+      padding: 22px;
+    }
+
+    .card-white {
+      background-color: var(--white);
+      border: 1.5px solid var(--black);
+      padding: 22px;
+    }
+
+    .card-blue {
+      background-color: var(--pale-blue);
+      border: 1.5px solid var(--black);
+      padding: 22px;
+    }
+
+    .rhetoric-tag {
+      display: inline-block;
+      background-color: var(--black);
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 10px;
+      margin-bottom: 10px;
+    }
+
+    /* Interactive Data Contrast Infographic */
+    .infographic-box {
+      border: 2px solid var(--black);
+      background-color: var(--white);
+      padding: 24px;
+      margin: 28px 0;
+    }
+
+    .infographic-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1.5px solid var(--black);
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+    }
+
+    .toggle-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .toggle-btn {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 0.95rem;
+      font-weight: bold;
+      padding: 7px 14px;
+      border: 1.5px solid var(--black);
+      background-color: var(--white);
+      color: var(--black);
+      cursor: pointer;
+    }
+
+    .toggle-btn.active {
+      background-color: var(--black);
+      color: var(--white);
+    }
+
+    .stat-number {
+      font-size: 2.15rem;
+      font-weight: bold;
+      display: block;
+      margin: 6px 0;
+    }
+
+    .bar-track {
+      width: 100%;
+      height: 18px;
+      background-color: var(--white);
+      border: 1.5px solid var(--black);
+      margin: 10px 0 14px;
+    }
+
+    .bar-fill-black {
+      height: 100%;
+      background-color: var(--black);
+    }
+
+    .bar-fill-blue {
+      height: 100%;
+      background-color: var(--pale-blue-mid);
+    }
+
+    /* Figures & Required Images */
+    figure {
+      border: 1.5px solid var(--black);
+      background-color: var(--pale-blue-light);
+      padding: 16px;
+      margin: 24px 0;
+    }
+
+    figure img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+      background-color: var(--white);
+      border: 1px solid var(--black);
+    }
+
+    figcaption {
+      margin-top: 12px;
+      font-size: 0.96rem;
+    }
+
+    /* Lists & Tables */
+    ul, ol {
+      margin: 0 0 18px 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background-color: var(--white);
+    }
+
+    th, td {
+      border: 1.5px solid var(--black);
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: var(--pale-blue);
+      font-weight: bold;
+    }
+
+    /* MLA Works Cited Formatting */
+    .works-cited p {
+      padding-left: 36px;
+      text-indent: -36px;
+      margin-bottom: 14px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--pale-blue-light);
+      border-top: 2px solid var(--black);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 850px) {
+      .three-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      .hero-banner h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION -->
+  <header>
+    <div class="nav-container">
+      <button type="button" class="site-brand" onclick="switchTab('home')">
+        Queen City Surplus Bridge
+      </button>
+      <nav aria-label="Primary Site Navigation">
+        <button type="button" class="tab-btn active" data-tab="home" onclick="switchTab('home')">Home</button>
+        <button type="button" class="tab-btn" data-tab="root-issue" onclick="switchTab('root-issue')">The Root Issue</button>
+        <button type="button" class="tab-btn" data-tab="business-signin" onclick="switchTab('business-signin')">Business Sign In</button>
+        <button type="button" class="tab-btn" data-tab="find-food" onclick="switchTab('find-food')">Find Food Near You</button>
+        <button type="button" class="tab-btn" data-tab="sources" onclick="switchTab('sources')">Sources</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         TAB 1: HOME PAGE (PERSUASIVE B2B PITCH + INTERACTIVE INFOGRAPHIC)
+         ========================================================= -->
+    <section id="home" class="tab-panel active">
+      <div class="hero-banner">
+        <!-- Downtown (Uptown) Charlotte Skyline SVG in Bright Pale Blue Tones -->
+        <svg class="skyline-bg" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+          <rect x="40" y="110" width="55" height="90" fill="#C4DFF8" />
+          <rect x="110" y="80" width="70" height="120" fill="#DCEBFA" />
+          <polygon points="200,200 200,55 235,20 270,55 270,200" fill="#C4DFF8" />
+          <rect x="290" y="65" width="80" height="135" fill="#DCEBFA" />
+          <polygon points="395,200 395,40 420,10 445,40 445,200" fill="#C4DFF8" />
+          <rect x="465" y="48" width="90" height="152" fill="#DCEBFA" />
+          <polygon points="575,200 575,25 605,5 635,25 635,200" fill="#C4DFF8" />
+          <rect x="655" y="55" width="85" height="145" fill="#DCEBFA" />
+          <rect x="760" y="75" width="75" height="125" fill="#C4DFF8" />
+          <polygon points="855,200 855,50 890,28 925,50 925,200" fill="#DCEBFA" />
+          <rect x="945" y="90" width="80" height="110" fill="#C4DFF8" />
+          <rect x="1045" y="115" width="95" height="85" fill="#DCEBFA" />
+        </svg>
+
+        <div class="hero-content">
+          <span class="hero-kicker">For Uptown Charlotte Culinary &amp; Hospitality Leaders</span>
+          <h1>Bridging Scarcity and Surplus</h1>
+          <p>
+            Downtown (Uptown) Charlotte has a dense concentration of restaurants, grocery stores, and convention venues that create mass amounts of food surplus daily—while over 120,000 Mecklenburg County neighbors struggle with consistent access to adequate nutrition. Join Charlotte's hyper-local surplus-recovery network to respect the ingredients, reduce waste disposal fees, and serve our community.
+          </p>
+          <div class="cta-group">
+            <button type="button" class="btn-primary" onclick="switchTab('business-signin')">Explore Kitchen Onboarding</button>
+            <button type="button" class="btn-secondary" onclick="switchTab('root-issue')">Read The Root Issue</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Persuasive B2B Value Proposition Directly Adapted from Research Proposal -->
+      <div class="card-white">
+        <h2>Recruiting Uptown Kitchens to Bridge Charlotte's Food Divide</h2>
+        <p>
+          The main purpose of this platform is to recruit Downtown (Uptown) Charlotte food service operators—specifically independent restaurants, bakeries, cafeterias, and hotel catering kitchens—into a local surplus food-recovery program inspired by the <strong>"Too Good To Go"</strong> model. We act as a direct digital bridge between commercial food overproduction in Uptown Charlotte and surrounding urban hunger by creating a real-time marketplace where businesses can list overstock and end-of-day surplus at deep discounts or for free.
+        </p>
+        <p style="margin-bottom: 0;">
+          Uptown hospitality operators work under demanding labor schedules, strict health codes, and unpredictable daily customer traffic. At the same time, local culinary leaders place high value on brand reputation, kitchen sustainability, waste reduction, and corporate social responsibility. Participating in this recovery network alleviates closing-time operational realities—minimizing waste disposal fees while framing food recovery as an essential step of culinary craft and respecting the ingredients rather than extra labor for charity.
+        </p>
+      </div>
+
+      <!-- Three Rhetorical Pillars for Local Business Partners: Logos, Ethos, Pathos -->
+      <div class="three-col">
+        <div class="card-blue">
+          <span class="rhetoric-tag">Logos: The Operational Case</span>
+          <h3>Agile Same-Day Recovery Over Bulk Warehousing</h3>
+          <p style="margin-bottom: 0;">
+            Traditional food banks rely on industrial warehousing, bulk storage, and strict scheduled distribution, which is ineffective at redistributing small-batch, highly perishable food surplus from downtown restaurants, bakeries, and cafes before they spoil (Zuckerman 6, 11). Research by Colleen Hammelman and Dylan Turner shows that smaller-scale, digitally agile distribution efforts work far more effectively for local communities (100).
+          </p>
+        </div>
+
+        <div class="card-white">
+          <span class="rhetoric-tag">Ethos: Research &amp; Legal Protection</span>
+          <h3>Backed by University Scholarship &amp; Federal Law</h3>
+          <p style="margin-bottom: 0;">
+            Built on peer-reviewed food-systems research from UNC Charlotte and Duke University, our model embeds legal protections under the federal <strong>Bill Emerson Good Samaritan Food Donation Act</strong>—giving Uptown kitchen managers institutional credibility and liability assurance when redirecting wholesome end-of-day surplus to local residents.
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="rhetoric-tag">Pathos: Civic Leadership</span>
+          <h3>Bridging Charlotte's Crescent vs. Wedge Divide</h3>
+          <p style="margin-bottom: 0;">
+            In a city divided between the affluent "Wedge" and the historically marginalized "Crescent" framing Uptown, progressive hospitality partners are stepping forward to ensure that fresh, commercial-kitchen meals nourish working families and children rather than ending up in landfills (Zuckerman 8, 10).
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive Infographic: Two-Column Split Contrasting System/Transit Gaps vs. Hunger Metrics -->
+      <div class="infographic-box" aria-live="polite">
+        <div class="infographic-header">
+          <div>
+            <h3 style="margin-bottom: 2px;">The Charlotte Paradox: Infrastructure Gaps vs. Local Hunger</h3>
+            <span style="font-size: 0.95rem;">Use the buttons below to compare countywide hunger data with child and transit barriers in Mecklenburg County.</span>
+          </div>
+          <div class="toggle-group">
+            <button type="button" id="btn-view-county" class="toggle-btn active" onclick="setCounterView('county')">Countywide Overview</button>
+            <button type="button" id="btn-view-families" class="toggle-btn" onclick="setCounterView('families')">Children &amp; Transit Barriers</button>
+          </div>
+        </div>
+
+        <div class="two-col" style="margin: 0;">
+          <!-- Left Column: Commercial Surplus & System Gaps -->
+          <div class="card-blue">
+            <strong id="left-label">Emergency Food Infrastructure Gap</strong>
+            <span id="left-stat" class="stat-number">69% Insufficient</span>
+            <div class="bar-track" role="img" aria-label="69 percent stakeholder gap bar">
+              <div id="left-bar" class="bar-fill-black" style="width: 69%;"></div>
+            </div>
+            <p id="left-desc" style="margin-bottom: 0;">
+              <strong>69% of local food security stakeholders</strong> view Charlotte's current emergency food infrastructure as insufficient for long-term support options for families (Zuckerman 11). While Second Harvest Food Bank of Metrolina distributes 94 million pounds annually and Community Food Rescue collects 10.5 million pounds from large retail donors, wholesale warehousing cannot capture small, same-day perishable batches from Uptown restaurants, bakeries, and cafes before they spoil (Zuckerman 6).
+            </p>
+          </div>
+
+          <!-- Right Column: Local Hunger Metrics -->
+          <div class="card-white">
+            <strong id="right-label">Mecklenburg County Food Insecurity</strong>
+            <span id="right-stat" class="stat-number">12% – 15% (120,000+ People)</span>
+            <div class="bar-track" role="img" aria-label="15 percent county hunger bar">
+              <div id="right-bar" class="bar-fill-blue" style="width: 15%;"></div>
+            </div>
+            <p id="right-desc" style="margin-bottom: 0;">
+              Between <strong>12% and 15% of Mecklenburg County households</strong>—over <strong>120,000 people</strong>—struggle with consistent access to adequate nutrition, while North Carolina consistently ranks as the <strong>10th hungriest state nationwide</strong> (Zuckerman 6; Charlotte-Mecklenburg Food Policy Council 60; McManimon; Rogers).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Impact Pathos Visual: Required Image 2 -->
+      <figure>
+        <img
+          src="WRDS_Website.jpg"
+          alt="Child surrounded by discarded waste illustrating the human urgency of diverting edible food from landfills to families"
+          onerror="this.onerror=null; this.src='https://placehold.co/900x450/DCEBFA/000000?text=WRDS_Website.jpg+-+Place+in+Same+GitHub+Folder';"
+        />
+        <figcaption>
+          <strong>The Painful Paradox of Discarded Surplus:</strong> Because of constantly changing consumer traffic, visible imperfections, and strict food sell-by timelines, commercial kitchens regularly discard good food as waste while adjacent neighborhoods face acute hunger and diet-related health complications (Zuckerman 6, 11).
+        </figcaption>
+      </figure>
+
+      <!-- Direct Call to Action Banner -->
+      <div class="card-blue" style="text-align: center; margin-top: 24px;">
+        <h3>Explore the Structural History or Review Kitchen Onboarding</h3>
+        <p>
+          Learn how spatial segregation shaped Charlotte's food landscape, or review our step-by-step onboarding guide for Uptown kitchens.
+        </p>
+        <div class="cta-group">
+          <button type="button" class="btn-dark" onclick="switchTab('root-issue')">Read The Root Issue</button>
+          <button type="button" class="btn-secondary" onclick="switchTab('business-signin')">Go to Business Sign In</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         TAB 2: THE ROOT ISSUE (SOURCED DIRECTLY FROM PDF PARAGRAPHS)
+         ========================================================= -->
+    <section id="root-issue" class="tab-panel">
+      <h2>The Root Issue: History, Spatial Segregation, and Community Impact</h2>
+
+      <!-- Paragraph 1 from Page 3: Scope of Hunger & Commercial Surplus Paradox -->
+      <p>
+        Food insecurity across Charlotte and Mecklenburg County isn't merely a regional deficit in food supply, but a profound structural issue rooted in discrimination. Despite Charlotte's standing as one of the fastest-growing metropolitan areas in the United States, between <strong>12% and 15% of Mecklenburg County households</strong>—over <strong>120,000 people</strong>—struggle with consistent access to adequate nutrition (Zuckerman 6; Charlotte-Mecklenburg Food Policy Council 60). While Charlotte's overall food insecurity rate roughly mirrors national averages, the numbers depicting families with children are alarmingly high: <strong>over 33% of local households with children</strong> experience food insecurity, compared to the <strong>19% national average</strong> (Charlotte-Mecklenburg Food Policy Council 63). Overall, North Carolina consistently ranks as the <strong>10th hungriest state nationwide</strong>, with food insecurity rates far surpassing national averages (McManimon; Rogers).
+      </p>
+      <p>
+        This deprivation exists directly alongside many commercial food stores. Downtown (Uptown) Charlotte has a dense concentration of restaurants, grocery stores, and convention venues that create mass amounts of food surplus daily. Because of constantly changing consumer traffic, visible imperfections, and strict food sell-by timelines, these commercial kitchens regularly discard good food as waste. This creates a painful paradox of acute hunger and diet-related health complications, sitting right next to commercial centers dumping edible surplus into landfills.
+      </p>
+
+      <!-- Required Image 1: Charlotte Crescent vs. Wedge Map -->
+      <figure>
+        <img
+          src="charlotte_crescent_wedge_map.png"
+          alt="Map of Charlotte, North Carolina showing Uptown Charlotte framed by The Crescent in red and The Wedge in green"
+          onerror="this.onerror=null; this.src='https://placehold.co/900x450/DCEBFA/000000?text=charlotte_crescent_wedge_map.png+-+Place+in+Same+GitHub+Folder';"
+        />
+        <figcaption>
+          <strong>Charlotte's Crescent vs. Wedge Divide:</strong> Local government and corporate real estate policies divided Charlotte into the affluent, predominantly White "Wedge" in South Charlotte and the historically marginalized "Crescent" circling Uptown across North, West, and East Charlotte (Zuckerman 8; Hammelman and Turner 100).
+        </figcaption>
+      </figure>
+
+      <!-- Paragraphs from Pages 2 & 3: Racism's Role, Urban Renewal, and Food Apartheid -->
+      <h3>Systemic Segregation, Urban Renewal, and Food Apartheid</h3>
+      <p>
+        The food insecurity rates in Charlotte aren't simply a byproduct of the local economy, but a direct legacy of systemic racial segregation, exclusionary zoning, and discriminatory municipal planning. Over decades, local government and corporate real estate built up the isolation that divided Charlotte into two distinct areas: the affluent, predominantly White <strong>"Wedge"</strong> in South Charlotte, and the historically marginalized <strong>"Crescent"</strong> circling the downtown of North, West, and East Charlotte (Zuckerman 8; Hammelman and Turner 100).
+      </p>
+      <p>
+        This was brought about around the mid-twentieth-century federal policy of <strong>"urban renewal"</strong> that was established under the <strong>Housing Act of 1949</strong>, lasting through the 1950s and early 1960s. In Charlotte, municipal redevelopment programs cleared out and destroyed historic, self-sustaining African American communities near Downtown to make way for commercial expansion, higher-class housing, and infrastructure—a policy novelist James Baldwin famously dubbed <em>"Negro Removal"</em> in the 1960s (Zuckerman 10). Because residential property and land ownership represent the primary way to accumulate generational wealth in the United States, the physical destruction and displacement of these neighborhoods ruined community equity and contributed to the appalling <strong>13:1 wealth gap between White and Black residents</strong> in Charlotte (Zuckerman 10).
+      </p>
+      <p>
+        This spatial segregation is a consistent trend in modern Mecklenburg County food and poverty statistics:
+      </p>
+      <ul>
+        <li><strong>Demographics of Low-Access Census Blocks:</strong> In Mecklenburg County census block groups designated as lacking full-service grocery stores, <strong>57% to 59% of residents are Black (African American)</strong> and <strong>12% to 17% are Hispanic</strong> (Zuckerman 10).</li>
+        <li><strong>Disproportionate Family Poverty Rates:</strong> Poverty rates for <strong>Black families (19.9%)</strong> and <strong>Hispanic families (28.0%)</strong> in Mecklenburg County far exceed those of <strong>White families (3.7%)</strong> (Zuckerman 7).</li>
+        <li><strong>Food Apartheid vs. "Food Desert":</strong> Dr. Nicole Peterson of UNC Charlotte notes that the layman term <em>"food desert"</em> is fundamentally flawed because it implies something that is a naturally occurring ecological condition; instead, most scholars and community advocates name this reality as a <strong>food apartheid</strong>—the institutionalized, intentional lack of investment in low-income neighborhoods and communities of color (Zuckerman 10; Rogers). As huge corporate supermarkets migrated to the affluent White suburbs, historically Black communities like <strong>West Boulevard</strong> and <strong>Beatties Ford Road</strong> were left abandoned, leaving residents with mainly convenience stores and fast-food chains while draining millions of retail food dollars out of community grocery stores (Charlotte-Mecklenburg Food Policy Council 84).</li>
+      </ul>
+
+      <!-- Paragraph from Page 4: Transit Barriers, Gentrification, and Diet-Related Health Risks -->
+      <h3>Transportation Barriers, Gentrification, and Health Consequences</h3>
+      <p>
+        The physical geography of Downtown Charlotte only adds to these racial and economic fault lines through transportation barriers. According to the Charlotte-Mecklenburg Food Policy Council, approximately <strong>three-quarters of county residents</strong> are required to travel over a mile to reach their primary grocery store (71). For low-income households in the Crescent who lack personal vehicles, getting nutritious groceries turns into a monumental task of navigating multiple public transit options all while carrying heavy bags, making grocery shopping a burdensome, time-consuming task (Charlotte-Mecklenburg Food Policy Council 70; Rogers).
+      </p>
+      <p>
+        At the same time, rapid gentrification of local areas has inflated real estate values and commercial rents. As large corporate redevelopments and luxury high-rises expand across Uptown, affordable independent grocery stores have been displaced, leaving instead high-end eateries and specialty grocery stores targeting affluent commuters. Low-income families in adjacent neighborhoods are physically close to these food sources, yet financially excluded. Surrounded by convenience stores and fast-food franchises offering calorically dense, shelf-stable items, local residents face alarming numbers of elevated health risks: <strong>61% of Mecklenburg County adults are overweight or obese</strong>, and diet-related chronic conditions such as diabetes and hypertension are heavily concentrated along Crescent communities (Charlotte-Mecklenburg Food Policy Council 8; Zuckerman 7).
+      </p>
+
+      <!-- Paragraph from Page 4 & Pages 6-7: Current Help, SNAP Cliff Effect, and Why Our Program Helps -->
+      <h3>Current Emergency Help, the SNAP "Cliff Effect," and Why Hyper-Local Recovery Matters</h3>
+      <div class="two-col">
+        <div class="card-white">
+          <h4>Why Wholesale Food Relief &amp; Federal Aid Leave Gaps</h4>
+          <p>
+            Charlotte has an expansive food support and emergency feeding network. <strong>Second Harvest Food Bank of Metrolina</strong> operates on a regional scale that distributes <strong>94 million pounds of food annually</strong> across 24 counties ("Charlotte Food Bank Reports Record for Families"; Zuckerman 6). Under its <strong>Community Food Rescue (CFR)</strong> initiative, refrigerated trucks collect around <strong>10.5 million pounds</strong> of perishable items directly from large retail donors for distribution to 36 feeding non-profits, while organizations like <strong>Nourish Up</strong> (formerly Loaves &amp; Fishes/Friendship Trays) deliver groceries and prepared meals directly to seniors and crisis-affected families (McManimon).
+          </p>
+          <p style="margin-bottom: 0;">
+            Despite these charitable efforts, traditional food banks rely on industrial warehousing, bulk storage, and strict scheduled distribution—which is ineffective at redistributing small-batch, highly perishable food surplus from downtown restaurants, bakeries, and cafes before they spoil. A recent stakeholder assessment revealed that <strong>69% of local food security stakeholders</strong> view the current system and infrastructure as insufficient for long-term support options for families (Zuckerman 11). Meanwhile, working households earning between <strong>130% and 185% of the Federal Poverty Level</strong> face what is known as the <strong>"cliff effect"</strong>—they earn too much to qualify for federal programs like SNAP and FNS, yet lack the income to afford full-price food in Charlotte's inflating market (Charlotte-Mecklenburg Food Policy Council 62; Delia; Gaddy and Morrell).
+          </p>
+        </div>
+
+        <div class="card-blue">
+          <h4>How This Platform Benefits the Charlotte Community</h4>
+          <p>
+            Research by Colleen Hammelman and Dylan Turner demonstrates that smaller-scale distribution efforts and digitally agile adaptations work more effectively for local communities than rigid wholesale logistics alone (100). Grounded in Jennifer Zuckerman's recommendation on shifting from emergency charity to dignified community access (11), our hyper-local surplus recovery platform benefits Charlotte in three concrete ways:
+          </p>
+          <ul style="margin-bottom: 0;">
+            <li><strong>Dignified Community Access:</strong> Families—including working households caught in the 130%–185% SNAP gap—gain affordable or free access to fresh, restaurant-quality meals without bureaucratic stigma or long warehouse wait times.</li>
+            <li><strong>Same-Day Perishable Rescue:</strong> Commercial kitchens in Uptown list unsold food at the end of service so perishable batches reach nearby residents within hours instead of spoiling in landfills.</li>
+            <li><strong>Environmental &amp; Civic Stewardship:</strong> Redirecting edible surplus reduces commercial landfill waste and strengthens neighborhood solidarity between Uptown hospitality leaders and Crescent residents.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cta-group" style="margin-top: 24px;">
+        <button type="button" class="btn-dark" onclick="switchTab('business-signin')">See Kitchen Onboarding Steps</button>
+        <button type="button" class="btn-secondary" onclick="switchTab('sources')">View All Cited Sources</button>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         TAB 3: BUSINESS SIGN IN (NON-OPERATIONAL PILOT PREVIEW)
+         ========================================================= -->
+    <section id="business-signin" class="tab-panel">
+      <h2>Business Sign In &amp; Kitchen Onboarding</h2>
+      <p>
+        We designed <strong>Queen City Surplus Bridge</strong> specifically for Uptown Charlotte independent restaurant owners, bakery operators, hotel food-and-beverage companies, and catering kitchens. Participation requires zero long-term contracts, zero extra delivery staffing, and minimal closing-time effort.
+      </p>
+
+      <!-- Step-by-Step Guide (Linguistic Mode) -->
+      <div class="card-blue">
+        <h3>Three-Step Kitchen Onboarding Guide</h3>
+        <ol style="margin-bottom: 0;">
+          <li><strong>Verify Your Uptown Kitchen Profile:</strong> Confirm your business name, kitchen category (independent restaurant, bakery/cafe, hotel food &amp; beverage, or catering kitchen), and Uptown street location during pilot onboarding.</li>
+          <li><strong>Publish End-of-Day Surplus in Two Minutes:</strong> Near closing, list your unsold portions—either as free community-sponsored bundles or at a discounted recovery price—and set a convenient counter pickup window.</li>
+          <li><strong>Verify Counter Pickup &amp; Showcase Your Impact:</strong> Neighbors pick up directly at your counter during your scheduled window, turning closing-time surplus into community goodwill without requiring warehouse storage or delivery drivers.</li>
+        </ol>
+      </div>
+
+      <!-- Two Column Split: Intentionally Non-Functional Calculator & Sign-In Notices -->
+      <div class="two-col">
+        <!-- Non-Operational Recovery Calculator Notice -->
+        <div class="card-white">
+          <span class="rhetoric-tag">Calculator Offline — Pilot Stage</span>
+          <h3>Kitchen Surplus &amp; Cost Recovery Calculator</h3>
+          <p>
+            The interactive recovery calculator is intentionally disabled during this pilot phase so that no unverified financial savings or waste-diversion numbers are displayed.
+          </p>
+          <p style="margin-bottom: 0;">
+            Once participating Uptown kitchens establish baseline closing logs, verified surplus bundle counts and waste-diversion metrics will be tracked directly from confirmed partner listings.
+          </p>
+        </div>
+
+        <!-- Non-Operational Kitchen Sign-In & Registration Notice -->
+        <div class="card">
+          <span class="rhetoric-tag">Registration Offline — Pilot Stage</span>
+          <h3>Kitchen Partner Sign In &amp; Registration</h3>
+          <p>
+            Automated account sign-in and self-service registration forms are currently offline while our Uptown Charlotte pilot cohort is being established.
+          </p>
+          <p style="margin-bottom: 0;">
+            Prospective Uptown restaurant, bakery, hotel, and catering partners can review our onboarding steps above and prepare their preferred end-of-day counter pickup window for launch.
+          </p>
+        </div>
+      </div>
+
+      <!-- Ethos: Legal Protection & Food Safety Assurance -->
+      <div class="card-white">
+        <h3>Federal Liability Protection &amp; Food Safety Assurance (Ethos)</h3>
+        <p style="margin-bottom: 0;">
+          Partnering commercial kitchens are protected under the federal <strong>Bill Emerson Good Samaritan Food Donation Act</strong>, which shields businesses from civil and criminal liability when donating apparently wholesome food in good faith to community food-recovery initiatives. Participating kitchens maintain standard Mecklenburg County cold-chain and food-handling protocols throughout their designated end-of-day pickup windows.
+        </p>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         TAB 4: FIND FOOD NEAR YOU (HONEST EMPTY-STATE MARKETPLACE)
+         ========================================================= -->
+    <section id="find-food" class="tab-panel">
+      <h2>Find Surplus Food Near You</h2>
+      <p>
+        Built for working households caught in the <strong>130%–185% Federal Poverty Level "cliff effect"</strong> and Charlotte neighbors seeking fresh, affordable meals without long transit trips (Charlotte-Mecklenburg Food Policy Council 62, 71; Gaddy and Morrell). When partner kitchens publish end-of-day surplus, community members can claim available bundles directly at the counter—shifting from emergency charity to dignified community access (Zuckerman 11).
+      </p>
+
+      <!-- Honest Empty-State Table (Zero Fake Listings or Dead Buttons) -->
+      <table>
+        <thead>
+          <tr>
+            <th>Partner Kitchen &amp; Location</th>
+            <th>Surplus Bundle Description</th>
+            <th>Pickup Window</th>
+            <th>Pricing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" style="text-align: center; background-color: var(--pale-blue-light); padding: 28px 20px;">
+              <strong style="font-size: 1.15rem; display: block; margin-bottom: 8px;">
+                No Active Kitchen Surplus Bundles Posted Yet
+              </strong>
+              <p style="max-width: 720px; margin: 0 auto 16px;">
+                To maintain complete transparency and accuracy, placeholder listings are never displayed on this board. Verified end-of-day food bundles from Uptown Charlotte restaurants, bakeries, and cafes will appear here once participating kitchens complete pilot onboarding.
+              </p>
+              <button type="button" class="btn-dark" onclick="switchTab('business-signin')">
+                View Kitchen Onboarding Details
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- How Counter Pickup Serves Charlotte Neighbors -->
+      <div class="two-col">
+        <div class="card-white">
+          <h3>Dignified Access Without Eligibility Paperwork</h3>
+          <p style="margin-bottom: 0;">
+            Unlike traditional emergency pantries that rely on fixed warehouse schedules or income cutoffs that exclude working families earning 130%–185% of the Federal Poverty Level, this marketplace connects neighbors directly to fresh, restaurant-prepared food at free or deeply discounted prices (Zuckerman 11; Gaddy and Morrell).
+          </p>
+        </div>
+
+        <div class="card-blue">
+          <h3>Convenient Uptown &amp; Transit-Accessible Pickups</h3>
+          <p style="margin-bottom: 0;">
+            With approximately three-quarters of Mecklenburg County residents traveling over a mile to reach a primary grocery store, locating surplus pickups along Uptown and transit corridors reduces burdensome multi-transfer bus trips for Crescent families (Charlotte-Mecklenburg Food Policy Council 70–71; Rogers).
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         TAB 5: SOURCES (WORKS CITED FROM RESEARCH PROPOSAL)
+         ========================================================= -->
+    <section id="sources" class="tab-panel">
+      <h2>Sources &amp; Works Cited</h2>
+      <p>
+        All statistics, historical context, and policy analyses presented across <strong>Queen City Surplus Bridge</strong> are drawn exclusively from the peer-reviewed studies, institutional food-system assessments, and Charlotte journalism cited below:
+      </p>
+
+      <div class="card-white works-cited">
+        <p>
+          "Charlotte Food Bank Reports Record for Families." <em>105.3 RnB</em>, 2 Oct. 2026.
+        </p>
+        <p>
+          Charlotte-Mecklenburg Food Policy Council. <em>State of the Plate: Charlotte-Mecklenburg Food System Assessment</em>. Charlotte-Mecklenburg Food Policy Council, 2015.
+        </p>
+        <p>
+          Delia, Sarah. "Solutions for Food Insecurity in the Mecklenburg County and Beyond." <em>WFAE 90.7 - Charlotte's NPR News Source</em>, 15 Apr. 2024.
+        </p>
+        <p>
+          Feeding America. "Child Hunger &amp; Poverty in Mecklenburg County, North Carolina." <em>Map the Meal Gap</em>, Feeding America, 2026.
+        </p>
+        <p>
+          Gaddy, Mia, and Liz Morrell. "Closing the (SNAP) Gap." <em>Charlotte Urban Institute</em>, University of North Carolina at Charlotte, 16 Apr. 2026.
+        </p>
+        <p>
+          Hammelman, Colleen, and Dylan Turner. "Adaptations and Innovations: Analyzing Food System Organizations' Responses to the COVID-19 Pandemic." <em>Journal of Agriculture, Food Systems, and Community Development</em>, vol. 12, no. 1, 2022, pp. 95-114.
+        </p>
+        <p>
+          McManimon, R. "The Queen's Dilemma: Food Distribution in the Piedmont Foodshed." UNC Charlotte Department of History, 2019.
+        </p>
+        <p>
+          Rogers, Amy. "WFAEats: Why Are People Hungry In Charlotte?" <em>WFAE 90.7 - Charlotte's NPR News Source</em>, 23 Aug. 2019.
+        </p>
+        <p>
+          Second Harvest Food Bank of Metrolina. "Hunger Statistics." Second Harvest Food Bank of Metrolina, 2026.
+        </p>
+        <p style="margin-bottom: 0;">
+          Zuckerman, Jennifer. <em>Charlotte Food &amp; Social Mobility Summit Report &amp; Recommendations</em>. Duke World Food Policy Center, 2019.
+        </p>
+      </div>
+
+      <div class="card-blue" style="margin-top: 24px;">
+        <h3>How These Sources Inform This Website</h3>
+        <ul style="margin-bottom: 0;">
+          <li><strong>Hammelman &amp; Turner (2022):</strong> Establishes how smaller-scale, digitally agile distribution models work more effectively for local communities than rigid wholesale logistics alone (100).</li>
+          <li><strong>Charlotte-Mecklenburg Food Policy Council (2015):</strong> Documents the 12%–15% household food insecurity rate, the 33%+ rate among households with children, the 75% one-mile grocery transit barrier, the 61% adult overweight/obesity rate, and disinvestment along West Boulevard and Beatties Ford Road (8, 60–84).</li>
+          <li><strong>Zuckerman / Duke World Food Policy Center (2019):</strong> Connects Charlotte's Crescent vs. Wedge divide and 13:1 racial wealth gap to 1950s–1960s urban renewal, highlights Dr. Nicole Peterson's scholarship on food apartheid, notes that 69% of stakeholders view emergency infrastructure as insufficient, and advocates shifting from emergency charity to dignified community access (6–11).</li>
+          <li><strong>Gaddy &amp; Morrell (2026) and Delia (2024):</strong> Examines the 130%–185% Federal Poverty Level SNAP "cliff effect" facing working households across Mecklenburg County.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p style="margin-bottom: 6px;">
+      <strong>Queen City Surplus Bridge</strong> — Uptown Charlotte Commercial Food-Recovery Initiative
+    </p>
+    <p style="margin-bottom: 0;">
+      Bridging Scarcity and Surplus Across Mecklenburg County
+    </p>
+  </footer>
+
+  <!-- =========================================================
+       FUNCTIONAL VANILLA JAVASCRIPT (TAB NAVIGATION & INFOGRAPHIC TOGGLE)
+       ========================================================= -->
+  <script>
+    // 1. Tab Navigation with URL Hash Support
+    function switchTab(tabId) {
+      const panels = document.querySelectorAll('.tab-panel');
+      const buttons = document.querySelectorAll('.tab-btn');
+
+      panels.forEach(panel => panel.classList.remove('active'));
+      buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.classList.add('active');
+        }
+      });
+
+      const activePanel = document.getElementById(tabId);
+      if (activePanel) {
+        activePanel.classList.add('active');
+        window.location.hash = tabId;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById(hash)) {
+        switchTab(hash);
+      }
+    });
+
+    // 2. Interactive Infographic Data Contrast Toggle (Verified PDF Statistics Only)
+    function setCounterView(mode) {
+      const btnCounty = document.getElementById('btn-view-county');
+      const btnFamilies = document.getElementById('btn-view-families');
+
+      const leftLabel = document.getElementById('left-label');
+      const leftStat = document.getElementById('left-stat');
+      const leftBar = document.getElementById('left-bar');
+      const leftDesc = document.getElementById('left-desc');
+
+      const rightLabel = document.getElementById('right-label');
+      const rightStat = document.getElementById('right-stat');
+      const rightBar = document.getElementById('right-bar');
+      const rightDesc = document.getElementById('right-desc');
+
+      if (mode === 'county') {
+        btnCounty.classList.add('active');
+        btnFamilies.classList.remove('active');
+
+        leftLabel.textContent = 'Emergency Food Infrastructure Gap';
+        leftStat.textContent = '69% Insufficient';
+        leftBar.style.width = '69%';
+        leftDesc.innerHTML = '<strong>69% of local food security stakeholders</strong> view Charlotte\'s current emergency food infrastructure as insufficient for long-term support options for families (Zuckerman 11). While Second Harvest Food Bank of Metrolina distributes 94 million pounds annually and Community Food Rescue collects 10.5 million pounds from large retail donors, wholesale warehousing cannot capture small, same-day perishable batches from Uptown restaurants, bakeries, and cafes before they spoil (Zuckerman 6).';
+
+        rightLabel.textContent = 'Mecklenburg County Food Insecurity';
+        rightStat.textContent = '12% – 15% (120,000+ People)';
+        rightBar.style.width = '15%';
+        rightDesc.innerHTML = 'Between <strong>12% and 15% of Mecklenburg County households</strong>—over <strong>120,000 people</strong>—struggle with consistent access to adequate nutrition, while North Carolina consistently ranks as the <strong>10th hungriest state nationwide</strong> (Zuckerman 6; Charlotte-Mecklenburg Food Policy Council 60; McManimon; Rogers).';
+      } else {
+        btnFamilies.classList.add('active');
+        btnCounty.classList.remove('active');
+
+        leftLabel.textContent = 'Grocery Distance & Transit Barrier';
+        leftStat.textContent = '75% Over 1 Mile Away';
+        leftBar.style.width = '75%';
+        leftDesc.innerHTML = 'Approximately <strong>three-quarters of Mecklenburg County residents</strong> are required to travel over a mile to reach their primary grocery store (Charlotte-Mecklenburg Food Policy Council 71). Working households earning <strong>130% to 185% of the Federal Poverty Level</strong> fall into the SNAP "cliff effect"—earning too much to qualify for public assistance, yet lacking the income to afford full-price food in Charlotte\'s inflating market (Charlotte-Mecklenburg Food Policy Council 62; Delia; Gaddy and Morrell).';
+
+        rightLabel.textContent = 'Local Households with Children';
+        rightStat.textContent = 'Over 33% Food Insecure';
+        rightBar.style.width = '33%';
+        rightDesc.innerHTML = 'Over <strong>33% of local households with children</strong> experience food insecurity—compared to the <strong>19% national average</strong>—contributing to elevated health risks along Crescent communities, where <strong>61% of Mecklenburg County adults</strong> are overweight or obese (Charlotte-Mecklenburg Food Policy Council 8, 63; Zuckerman 7).';
+      }
+    }
+  </script>
+</body>
+</html>
